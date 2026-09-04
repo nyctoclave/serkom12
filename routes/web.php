@@ -1,12 +1,14 @@
 <?php
-
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SchoolProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyProfileController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CompanyProfileController::class, 'index']);
+Route::put('/coba/update/{companyProfile}', [CompanyProfileController::class, 'update']);
+
+Route::get('/', [CompanyProfileController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -20,7 +22,10 @@ Route::middleware('auth')->group(function () {
 
 });
 
-Route::get('/landing', [SchoolProfileController::class, 'index']);
-Route::get('landing2', [SchoolProfileController::class, 'index2']);
+Route::middleware('auth')->group(function () {
+
+    Route::resource('article', ArticleController::class);
+
+})->prefix();
 
 require __DIR__.'/auth.php';
