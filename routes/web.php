@@ -28,4 +28,6 @@ Route::middleware('auth')->group(function () {
 
 })->prefix();
 
+
+
 require __DIR__.'/auth.php';

@@ -16,7 +16,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-        
+
 
             <!-- Page Heading -->
             @isset($header)
@@ -32,5 +32,7 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     </body>
 </html>

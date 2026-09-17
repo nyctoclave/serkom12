@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CompanyProfile;
 use Illuminate\Http\Request;
+use App\Models\Article;
 
 class CompanyProfileController extends Controller
 {
@@ -13,7 +14,7 @@ class CompanyProfileController extends Controller
     public function index()
     {
 
-    $data = ArticleL::all();
+    $data = Article::all();
 
         return view('landing-page.index2', compact('data'));
     }

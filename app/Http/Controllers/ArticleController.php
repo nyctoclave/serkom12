@@ -38,9 +38,8 @@ class ArticleController extends Controller
 
         Article::create($validated);
 
-        return redirect('/article');
 
-        if($request->hashFile('image')){
+        if($request->hasFile('image')){
             $path = $request->file('image')->store('articles', 'public');
             $validated['image'] = $path;
         }
@@ -79,6 +78,9 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article = Article::findOrFail($id);
+        $article->delete();
+
+        return alert("item sudah dihapus");
     }
 }
